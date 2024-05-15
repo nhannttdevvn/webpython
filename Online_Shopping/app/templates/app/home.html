@@ -6,27 +6,36 @@
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="{%static 'app/images/banner/b1.jpg'%}" class="d-block w-100" alt="Sữa con heo">
+      <img src="{%static 'app/images/banner/b1.jpg'%}" class="d-block w-100" alt="Sữa con heo" height="480">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Sữa con heo 2222</h5>
+        <h5>Sữa con heo </h5>
         <p>Uống vào ngu như heo.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="{%static 'app/images/banner/b2.jpg'%}" class="d-block w-100" alt="Sữa con heo">
+      <img src="{%static 'app/images/banner/b2.jpg'%}" class="d-block w-100" alt="Sữa con bò" height="480">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Sữa con heo</h5>
-        <p>Uống vào ngu như heo.</p>
+        <h5>Sữa con bò</h5>
+        <p>Uống vào ngu như bò.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{%static 'app/images/banner/b3.jpg'%}" class="d-block w-100" alt="Sữa con heo">
+      <img src="{%static 'app/images/banner/b3.jpg'%}" class="d-block w-100" alt="Sữa con dê" height="480">
+      <div class="carousel-caption d-none d-md-block-bg-success text-white">
+        <h5>Sữa con dê</h5>
+        <p>Uống vào ngu như dê.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'app/images/banner/b4.jpg'%}" class="d-block w-100" alt="Sữa con gà" height="480">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Sữa con heo</h5>
-        <p>Uống vào ngu như heo.</p>
+        <h5>Sữa con gà</h5>
+        <p>Uống vào ngu như gà.</p>
       </div>
     </div>
   </div>
@@ -41,5 +50,21 @@
 </div>
 {%endblock banner_slider%}
 {%block main-content%}
-Wellcome 
+
+<div class="row" style="width:100%">
+  {%for product in products %}
+  <div class="col-lg-3">
+    <img class="thumbnail" src="{%static "app/images/placeholder.png"%}" >
+    <div class="box-element product">
+      <h6><strong> {{product.name}} </strong> </h6>
+      <hr>
+      <button class="btn btn-outline-secondary add-btn"> Add cart </button>
+      <a class="btn btn-outline-success"> View </a>
+      <h4 style="display: inline-block; float:right"> <strong> {{product.price | floatformat:2}} </strong>
+  </div>
+</div>
+{% endfor %}
+<br/> <br/>
+<br/>
+
 {%endblock main-content%}
