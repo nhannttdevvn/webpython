@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
             name='OrderItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quality', models.IntegerField(blank=True, default=0, null=True)),
+                ('quantity', models.IntegerField(blank=True, default=0, null=True)),
                 ('date_added', models.DateTimeField(auto_now_add=True)),
                 ('order', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app.oder')),
                 ('product', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app.product')),
