@@ -52,6 +52,8 @@
                       </div>
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">You forgrt password?<a href= {% url 'login'%}>Quên mật khẩu?</a>
                       </p>
+                      {% for message in messages%}
+                      <p id='message' class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{message}}</a>
 
                     </form>
     
