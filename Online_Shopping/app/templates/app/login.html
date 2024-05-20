@@ -50,20 +50,19 @@
                       <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Login</button>
                       </div>
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">You forgrt password?<a href= {% url 'login'%}>Quên mật khẩu?</a>
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><a href= {% url 'login'%}>Quên mật khẩu?</a>
                       </p>
                       {% for message in messages%}
-                      <p id='message' class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{message}}</a>
-
+                      <p id='message' class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{message}}</a> 
                     </form>
-    
                   </div>
                   <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
     
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                       class="img-fluid" alt="Sample image">
-    
+                      
                   </div>
+                      {%endfor%}
                 </div>
               </div>
             </div>

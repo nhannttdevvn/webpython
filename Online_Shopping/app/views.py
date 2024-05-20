@@ -5,6 +5,7 @@ import json
 from django .contrib.auth.forms import UserCreationForm
 from django .contrib.auth import authenticate, login,logout 
 from django .contrib import messages
+import sys
 
 def search(request):
     if request.method =="POST":
@@ -25,7 +26,6 @@ def search(request):
     
 def register(request):
     form = CreateUserForm()
-    
     if request.method =="POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -53,22 +53,33 @@ def logoutPage(request):
     return redirect('login')
 
 def home(request):
+    print ("e1111111")
     if request.user.is_authenticated:
         customer = request.user
-        order, created = Order.objects.get_or_create(customer=customer, complete = False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-        user_not_login = "hidden"
-        user_login = "show"
-
+        print ("uuuuuuuuuuu", customer)
+        try:
+            order, created = Order.objects.get_or_create(customer=customer, complete = False)
+            print ("orderorderorderorder", order)
+            items = order.orderitem_set.all()
+            
+            cartItems = order.get_cart_items
+            user_not_login = "hidden"
+            user_login = "show"
+            print ("22222222")
+        except Exception  as e:
+            items = []
+            order={'get_cart_items':0, 'get_cart_total':0}
+            cartItems = order['get_cart_items']   
+            user_not_login = "show"
+            user_login = "hidden"
+            pass
     else:
         items = []
         order={'get_cart_items':0, 'get_cart_total':0}
         cartItems = order['get_cart_items']   
         user_not_login = "show"
         user_login = "hidden"
-         
-
+        print ("33333")
     products= Product.objects.all()
     context={'products':products, 'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
     return render(request,'app/home.html',context)
