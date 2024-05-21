@@ -47,7 +47,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home'%}">
-          <img src="{% static 'app/images/Neel.png' %}" width="50" height="50"/>
+          <img src="{% static 'app/images/Neel.png' %}" width="70" height="70" style="margin-left: 30px;" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,49 +55,50 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang chủ</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: #A41A61;  font-size: 20px;">Trang chủ</a>
             </li>
            
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #A41A61;font-size: 20px;">
                 Sản phẩm
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" style="color: #A41A61;font-size: 20px;">
                 <li><a class="dropdown-item" href="#">Sữa</a></li>
                 <li><a class="dropdown-item" href="#">Sữa</a></li>
                 <li><a class="dropdown-item" href="#">Sữa</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true" href="{% url 'cart' %}">Cart</a>
-
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: #A41A61;  font-size: 20px;">Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: #A41A61;  font-size: 20px;">Liên hệ</a>
             </li>
           </ul>
           <form class="d-flex" role="search" method= POST action = "{% url 'search'%}">
             {%csrf_token%}
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched" style="margin-left: 10px";>
+            <button class="btn btn-outline-success" type="submit" style="color: #CB24B5; border-color: #CB24B5; width: 190px; height:40px; border-radius: 5px; margin-right: 170px;">Tìm kiếm</button>
           </form>
         </div>
-          
+{% comment %}           
           <div class="form-inline my-2 my-lg-0" style="visibility: {{user_login}}">
             <span> Hello </span>
-            <span> <a href={% url 'logout'%}> Logout</a>  </span>
-
-          </div>
-
+          </div> {% endcomment %}
           <div class="form-inline my-2 my-lg-0" style="visibility: {{user_not_login}}">
 
-            <a class="nav-link" href={%url 'login'%}>Đăng nhập</a>
+            <a class="nav-link" href="{% url 'login' %}" style="color: #A41A61; font-size: 20px; ">Đăng nhập</a>
        
-            <a class="nav-link" href={%url 'register'%}>Đăng ký</a>
+            <a class="nav-link" href="{% url 'register' %}" style="color: #A41A61; font-size: 20px;">Đăng ký</a>
           </div>
         <div class="form-inline my-2 my-lg-0">
           <a href="{%url 'cart'%}">
             <img id="cart-icon" src="{%static 'images/cart.png'%}">
           </a> 
-          <p id='cart-total'>{{cartItems}}</p> 
+          {% comment %} <p id='cart-total'>{{cartItems}}</p>  {% endcomment %}
         </div>  
+        <a href={% url 'logout' %} style="font-size: 20px;" >Đăng xuất</a> 
+
       </div>
     </nav>
     {% block banner_slider %}{% endblock banner_slider %}
@@ -106,9 +107,10 @@
     {% block content_checkout %}{% endblock content_checkout %}
     {% block register %}{% endblock register %}
 
-    <footer class="container-fluid bg-success text-center fixed-bottom p-2 mt-5">
-      Nguyễn Thị Thanh Nhàn
+    <footer class="container-fluid text-center fixed-bottom p-2 mt-5" style="background-color: #C873D4;color: white;">
+      Nhóm 15 - BCSE2023
     </footer>
+  
     <script src="{% static 'app/js/cart.js' %}"></script> 
 
   </body>
