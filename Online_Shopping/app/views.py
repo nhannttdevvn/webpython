@@ -56,16 +56,12 @@ def home(request):
     print ("e1111111")
     if request.user.is_authenticated:
         customer = request.user
-        print ("uuuuuuuuuuu", customer)
         try:
             order, created = Order.objects.get_or_create(customer=customer, complete = False)
-            print ("orderorderorderorder", order)
             items = order.orderitem_set.all()
-            
             cartItems = order.get_cart_items
             user_not_login = "hidden"
             user_login = "show"
-            print ("22222222")
         except Exception  as e:
             items = []
             order={'get_cart_items':0, 'get_cart_total':0}
@@ -129,6 +125,7 @@ def updateItem(request):
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete = False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product = product)
+    print("555555555", order, orderItem)
     if action=='add':
         orderItem.quantity+=1
     elif action=='remove':
