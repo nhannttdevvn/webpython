@@ -3,7 +3,9 @@
 {% load static %}
 {% block content_checkout %}
      <div class="row" style='width:100%'>
-		<div class="col-lg-6">
+		<div class="col-lg-5" style="margin-left:60px">
+			<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190;Về giỏ hàng</a>
+
 			<div class="box-element" id="form-wrapper">
 				<form id="form">
 					<div id="user-info">
@@ -15,7 +17,7 @@
 						</div>
 					</div>
 					
-					<div id="shipping-info">
+					{% comment %} <div id="shipping-info">
 						<hr>
 						<p>Shipping Information:</p>
 						<hr>
@@ -28,13 +30,8 @@
 						<div class="form-field">
 							<input class="form-control" type="text" name="state" placeholder="State..">
 						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="country" placeholder="Zip code..">
-						</div>
-					</div>
+						
+					</div> {% endcomment %}
 
 					<hr>
 					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
@@ -50,9 +47,9 @@
 
 		<div class="col-lg-6">
 			<div class="box-element">
-				<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+				
 				<hr>
-				<h3>Order Summary</h3>
+				<h4 style="text-align: center">Tổng đơn hàng</h4>
 				<hr>
 				{% for item in items%}
 				<div class="cart-row">

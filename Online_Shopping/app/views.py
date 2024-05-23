@@ -8,6 +8,7 @@ from django .contrib import messages
 import sys
 
 def search(request):
+    
     if request.method =="POST":
         searched = request.POST["searched"]
         keys = Product.objects.filter(name__contains = searched)
@@ -19,7 +20,8 @@ def search(request):
     else:
         items = []
         order={'get_cart_items':0, 'get_cart_total':0}
-        cartItems = order['get_cart_items']    
+        cartItems = order['get_cart_items'] 
+
 
     products= Product.objects.all()
     return render(request,'app/search.html',{"searched":searched,"keys":keys,'products':products, 'cartItems':cartItems})
@@ -44,7 +46,7 @@ def loginPage(request):
         if user is not None:
             login(request,user)
             return redirect('home')
-        else: messages.info(request,'user or password not correct!')
+        else: messages.info(request,'User or password not correct!')
     context={}
     return render(request,'app/login.html',context)
 

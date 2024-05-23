@@ -44,9 +44,12 @@
                       <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" style="background-color: #EFC7F5; color: #000009; border-color: #EFC7f5; border-radius: 4px; height: 45px; width: 110px">Login</button>
                       </div>
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"; style="font-size: 20px" > You have a acount?<a href= {% url 'register'%}>      Sign up</a>
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"; style="font-size: 20px" > You don't have a acount?<a href= {% url 'register'%}>      Sign up</a>
                       </p>
+                      {%for message in messages%}
+                      <p id='message' class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"; style="font-size: 20px" > {{message}} </p>
 
+                      {%endfor%}
                     </form>
     
                   </div>
@@ -63,13 +66,7 @@
         </div>
       </div>
     </section>
-      {% comment %} <form method= "POST" action="">
-        {%csrf_token%}
-        {{form.as_p}}
-        {{form.username}}
-
-        <input type="submit" name="Creat user">
-      </form>  {% endcomment %}
+   
     <script src="" async defer></script>
     {%endblock register%}
   </body>

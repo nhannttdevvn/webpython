@@ -12,19 +12,22 @@
   </head>
   <body>
     {%block register %}
-    <h5> {{searched}} </h5> <br/>
-    {%for product in products%}
+    {% comment %} <h5> {{searched}} </h5> <br/> {% endcomment %}
+    <div class="row" style="width:100%; margin-left:40px"> 
+      {%for product in keys%}
+    {{key}} <br/>
     <div class="col-lg-4">
       <img class="thumbnail" src="{{product.image.url}}" >
       <div class="box-element product">
-        <h6><strong> {{product.name}}</strong> </h6>
-        <hr>
-        <button data-product={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart" > Add to cart </button>
-        <a class="btn btn-outline-success"> View </a>
-        <h4 style="display: inline-block; float:right"> <strong> {{product.price}} </strong>
+        <h6 style="color: #594DA3;"><strong>{{product.name}}</strong></h6>
+      <hr>
+      <button data-product={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart" style="border-radius:4px" > Thêm vào giỏ hàng </button>
+      <a class="btn btn-outline-success" style="color: #CB24B5; border-color: #CB24B5; border-radius:4px"> Xem </a>
+      <h4 style="display: inline-block; float:right"> <strong> {{product.price| floatformat:3}} VNĐ </strong>
       </div>
     </div>
     {% endfor %}
+    </div>
     {%endblock register%}
   </body>
 </html>

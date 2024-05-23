@@ -53,6 +53,15 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems if item.product is not None])   
         return total 
+    
+    def get_total_for_product(self, product_id):
+        # Lấy sản phẩm từ id
+        product = Product.objects.get(id=product_id)
+        # Lấy tất cả các mục đơn hàng liên quan đến sản phẩm này
+        order_items = self.orderitem_set.filter(product=product)
+        # Tính tổng tiền cho sản phẩm này
+        total = sum([item.get_total for item in order_items])
+        return total
 class OrderItem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,blank=True,null=True)
     order = models.ForeignKey(Order,on_delete=models.SET_NULL,blank=True,null=True)

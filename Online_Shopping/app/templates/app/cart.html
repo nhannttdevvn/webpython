@@ -4,12 +4,9 @@
 <div class="row" style='width:100%'>
 	<div class="col-lg-12">
 		<div class="box-element">
-
-			<a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
-
-			<br>
-			<br>
-			<table class="table">
+			{% comment %} <br>
+			<br> {% endcomment %}
+			{% comment %} <table class="table">
 				<tr>
 					<th><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
 					<th><h5>Total: <strong>{{order.get_cart_total}}</strong></h5></th>
@@ -17,36 +14,39 @@
 						<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
 					</th>
 				</tr>
-			</table>
-
+			</table> {% endcomment %}
 		</div>
-
-		<br>
-		<div class="box-element">
-			<div class="cart-row">
-				<div style="flex:2"><strong>Sản phẩm</strong></div>
-				<div style="flex:2"><strong>Tên </strong></div>
-				<div style="flex:1"><strong>Giá</strong></div>
-				<div style="flex:1"><strong>Số lượng</strong></div>
-				<div style="flex:1"><strong>Tổng tiền</strong></div>
-			</div>
-			{% for item in items%}
-			<div class="cart-row">
-				<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
-				<div style="flex:2"><p>{{item.product.name}}</p></div>
-				<div style="flex:1"><p>{{item.product.price}}</p></div>
-				<div style="flex:1">
-					<p class="quantity">{{item.quantity}}</p>
-					<div class="quantity">
-						<img data-product={{item.product.id}} data-action ='add' class="chg-quantity update-cart" src="{% static  'app/images/arrow-up.png' %}">
-				
-						<img data-product={{item.product.id}} data-action ='remove' class="chg-quantity update-cart" src="{% static  'app/images/arrow-down.png' %}">
-					</div>
+		<div>
+			<div class="box-element" style="margin-left:40px; margin-right:20px">
+				<div class="cart-row">
+					<div style="flex:2; font-size: 20px; margin-left: 60px"><strong>Sản phẩm</strong></div>
+					<div style="flex:2; font-size: 20px"><strong>Tên </strong></div>
+					<div style="flex:1; font-size: 20px"><strong>Giá</strong></div>
+					<div style="flex:1; font-size: 20px"><strong>Số lượng</strong></div>
+					{% comment %} <div style="flex:1"><strong>Tổng tiền</strong></div> {% endcomment %}
 				</div>
-				<div style="flex:1"><p>{{order.get_cart_total}}</p></div>
-			</div>
-      {%endfor%}
+				{% for item in items%}
+				<div class="cart-row">
+					<div style="flex:2">
+						<img class="row-image" src="{{ item.product.ImageURL }}" style="width: 120px; height: 80px;margin-left: 60px">
+				</div>
+					<div style="flex:2; font-size: 20px; margin-right:60px" ><p>{{item.product.name}}</p></div>
+					<div style="flex:1; font-size: 20px"><p>{{item.product.price}}</p></div>
+					<div style="flex:1; font-size: 20px">
+						<p class="quantity">{{item.quantity}}</p>
+						<div class="quantity">
+							<img data-product={{item.product.id}} data-action ='add' class="chg-quantity update-cart" src="{% static  'app/images/arrow-up.png' %}">
+							<img data-product={{item.product.id}} data-action ='remove' class="chg-quantity update-cart" src="{% static  'app/images/arrow-down.png' %}">
+						</div>
+					</div>
+					{% comment %} <div style="flex:1"><p>{{order.get_cart_total}}</p></div> {% endcomment %}
+				</div>
+				{%endfor%}
+</div>
 		</div>
 	</div>
 </div>
+<a  style="float:right; margin-top:20px;margin-right:70px; width:200px; height: 50px; font-size: 20px; border-radius:8px; background-color:#EFC7F5; border-color:#EFC7F5; color: #000000; text-decoration: none; display: flex; justify-content: center; align-items: center;" class="btn btn-success" href="{% url 'checkout' %}">Thanh toán</a>
+<a  style="float:left; margin-top:20px;margin-left:70px; width:200px; height: 50px; font-size: 20px;border-radius:8px; background-color:#EFC7F5; border-color:#EFC7F5; color: #000000; text-decoration: none; display: flex; justify-content: center; align-items: center;" class="btn btn-success" href="{% url 'home' %}">Về trang chủ</a>
+
 {% endblock cart_content %}
