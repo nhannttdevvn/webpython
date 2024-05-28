@@ -79,12 +79,12 @@
           <form class="d-flex" role="search" method= POST action = "{% url 'search'%}">
             {%csrf_token%}
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched" style="margin-left: 10px";>
-            <button class="btn btn-outline-success" type="submit" style="color: #CB24B5; border-color: #CB24B5; width: 190px; height:40px; border-radius: 5px; margin-right: 170px;white-space: nowrap" onmouseover="this.style.backgroundColor='#CB24B5'; this.style.color='white';" onmouseout="this.style.backgroundColor=''; this.style.color='#CB24B5';">Tìm kiếm</button>
+            <button class="btn btn-outline-success" type="submit" style="color: #CB24B5; border-color: #CB24B5; width: 190px; height:40px; border-radius: 5px; margin-right: 20px;white-space: nowrap" onmouseover="this.style.backgroundColor='#CB24B5'; this.style.color='white';" onmouseout="this.style.backgroundColor=''; this.style.color='#CB24B5';">Tìm kiếm</button>
           </form>
         </div>
           
-          <div class="form " style="visibility: {{user_login}};color: #A41A61; font-size: 20px; ">
-            <span> Hello </span>
+          <div class="form " style="visibility: {{user_login}};color: #A41A61; font-size: 20px; text-align: right ">
+            <span style=""> Hello </span>
           </div>  
           <div class=" my-2 my-lg-0" style="visibility: {{user_not_login}}; display: flex;align-items: center;white-space: nowrap;">
 
@@ -98,7 +98,7 @@
           </a> 
           {% comment %} <p id='cart-total'>{{cartItems}}</p>  {% endcomment %}
         </div>  
-        <a href={% url 'logout' %} style="font-size: 20px;white-space: nowrap" >Đăng xuất</a> 
+        <a href={% url 'logout' %} style="font-size: 20px;white-space: nowrap; margin-right:30px" >Đăng xuất</a> 
 
       </div>
     </nav>
