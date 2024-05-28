@@ -2,40 +2,36 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content_checkout %}
-     <div class="row" style='width:100%'>
-		<div class="col-lg-5" style="margin-left:60px">
-			<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190;Về giỏ hàng</a>
+<a  style="float:lef;margin-left:50px; margin-bottom:30px; width:200px; height: 50px; font-size: 20px;border-radius:8px; background-color:#EFC7F5; border-color:#EFC7F5; color: #000000; text-decoration: none; display: flex; justify-content: center; align-items: center;" class="btn btn-success" href="{% url 'cart' %}">Về giỏ hàng</a>
 
+     <div class="row" style='width:100%; '>
+			
+		<div class="col-lg-5" style="margin-left:60px">
+			
 			<div class="box-element" id="form-wrapper">
+				<h4 style="text-align: center">Thông tin đơn hàng</h4>
+				<hr>
 				<form id="form">
 					<div id="user-info">
 						<div class="form-field">
-							<input required class="form-control" type="text" name="name" placeholder="Name..">
+							<input required class="form-control" type="text" name="name" placeholder="Tên người nhận..">
 						</div>
+						</br>
 						<div class="form-field">
-							<input required class="form-control" type="email" name="email" placeholder="Email..">
+							<input class="form-control" type="text" name="address" placeholder="Địa chỉ..">
+						</div>
+					</br>
+
+						<div class="form-field"> 
+							<input class="form-control" type="text" name="address" placeholder="Số điện thoại..">
 						</div>
 					</div>
-					
-					{% comment %} <div id="shipping-info">
-						<hr>
-						<p>Shipping Information:</p>
-						<hr>
-						<div class="form-field">
-							<input class="form-control" type="text" name="address" placeholder="Address..">
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="city" placeholder="City..">
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="state" placeholder="State..">
-						</div>
-						
-					</div> {% endcomment %}
 
 					<hr>
-					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
-				</form>
+					<div style="text-align: center;">
+						<input id="form-button" class="btn btn-success btn-block" type="submit" value="Tiếp tục" style='border-radius: 5px; background-color: #EFC7F5; border-color: #EFC7F5; color: #000000; height:40px; width:160px'>
+				</div>
+							</form>
 			</div>
 
 			<br>
@@ -48,19 +44,26 @@
 		<div class="col-lg-6">
 			<div class="box-element">
 				
+				<h4 style="text-align: center; font-size: 28px">Tổng đơn hàng</h4>
 				<hr>
-				<h4 style="text-align: center">Tổng đơn hàng</h4>
-				<hr>
+				<div class="cart-row">
+					<div style="flex:2; font-size: 20px; "><strong>Sản phẩm</strong></div>
+					<div style="flex:2; font-size: 20px"><strong>Tên </strong></div>
+					<div style="flex:1; font-size: 20px"><strong>Giá</strong></div>
+					<div style="flex:1; font-size: 20px;margin-right: 10px"><strong>Số lượng</strong></div>
+				</div>
 				{% for item in items%}
 				<div class="cart-row">
 					<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
-					<div style="flex:2"><p>{{item.product.name}}</p></div>
-					<div style="flex:1"><p>{{item.product.price}}</p></div>
+					<div style="flex:2;"><p>{{item.product.name}}</p></div>
+					<div style="flex:1"><p>{{item.product.price| floatformat:3}}</p></div>
 					<div style="flex:1"><p>{{item.quantity}}</p></div>
 				</div>
 				{%endfor%}
-				<h5>Quantity: {{order.get_cart_items}}</h5>
-				<h5>Total: {{order.get_cart_total}}</h5>
+				<div>
+					<h5 style="display: inline;" >Đặt hàng</h5>
+					<h5 style="display: inline;float: right;">Tổng tiền: {{order.get_cart_total | floatformat:3}}</h5>
+				</div>
 			</div>
 		</div>
 	</div>
